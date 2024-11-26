@@ -1,9 +1,15 @@
+import { Toaster } from "react-hot-toast";
 import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
+  const products = useSelector((state) => state.cart.products);
   return (
     <nav className="bg-white shadow-md">
+      <div>
+        <Toaster />
+      </div>
       <div className="container mg-auto px-4 md:px-16 lg:px-24 py-4 flex justify-between items-center">
         <div className="text-lg font-bold">
           <Link to="/">E-Shop</Link>
@@ -19,8 +25,13 @@ export const Navbar = () => {
           </form>
         </div>
         <div className="flex items-center space-x-4">
-          <Link to="/cart">
+          <Link to="/cart" className="relative">
             <FaShoppingCart className="text-lg" />
+            {products.length > 0 && (
+              <span className="absolute top-0 text-sm w-3 left-3 bg-blue-600 rounded-full flex justify-center items-center text-white">
+                {products.length}
+              </span>
+            )}
           </Link>
           <button className="hidden md:block">Login | Register</button>
           <button className="block md:hidden">

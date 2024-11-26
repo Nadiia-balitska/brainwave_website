@@ -59,10 +59,23 @@ export const Footer = () => {
               placeholder="Enter Email"
               type="email"
             />
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-r-lg border border-gray-600">
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-r-lg ">
               Subscribe{" "}
             </button>
           </form>
+        </div>
+      </div>
+      <div className="mt-8 border-t border-gray-700 pt-4">
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+          <p>&copy; 2024 e-shop All rights reserved.</p>
+          <div className="flex space-x-4 mt-4 md:mt-0">
+            <a href="" className="hover:underline">
+              Privacy Policy
+            </a>
+            <a href="" className="hover:underline">
+              Term and Conditions
+            </a>
+          </div>
         </div>
       </div>
     </footer>
