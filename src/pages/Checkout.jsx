@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { GrNetworkDrive } from "react-icons/gr";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-export const Checkout = () => {
+export const Checkout = ({ setOrder }) => {
   const [billing, setBilling] = useState(true);
   const [shipping, setShipping] = useState(false);
   const [payment, setPayment] = useState(false);
@@ -15,6 +17,18 @@ export const Checkout = () => {
   });
 
   const cart = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+
+  const handleOrder = () => {
+    const newOrder = {
+      products: cart.products,
+      orderNumber: "1131",
+      shippingInformation: shippingInfo,
+      totalPrice: cart.totalPrice,
+    };
+    setOrder(newOrder);
+    navigate("/order-confirmation");
+  };
 
   return (
     <div className="container mx-auto py-8 min-h-96 md:px-16 lg:px-24">
@@ -254,7 +268,10 @@ export const Checkout = () => {
               </span>
             </div>
           </div>
-          <button className="w-full bg-red-400 text-white py-2 mt-6 hover:bg-red-300">
+          <button
+            className="w-full bg-red-400 text-white py-2 mt-6 hover:bg-red-300"
+            onClick={handleOrder}
+          >
             Place Order
           </button>
         </div>
