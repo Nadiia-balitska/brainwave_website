@@ -11,7 +11,7 @@ Features 🙌:
 
 Technology Stack 👩🏻‍💻:
 
-•Frontend:
+Frontend:
 
 •React: For building the user interface and handling state management.
 
